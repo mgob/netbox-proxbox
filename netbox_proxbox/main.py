@@ -1,6 +1,8 @@
-from fastapi import FastAPI, Request, WebSocket
+from fastapi import FastAPI, Request, WebSocket, Body, Header, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+
+from typing import Annotated
 
 from netbox_proxbox.backend.exception import ProxboxException
 
@@ -172,8 +174,19 @@ async def websocket_endpoint(
         
         
         #await websocket.send_text(f"Message text was: {data}")
-        
-        
+
+
+@app.post("/proxmox/webhook")
+async def post_webhook(request: Request):
+    
+    try:
+        payload = await request.json()
+        print(f"Raw payload: {payload}")
+        return {"status": "received"}
+    
+    except Exception as error:
+        raise HTTPException(status_code=500, detail=str(error))
+
 
 #
 # Routes (Endpoints)

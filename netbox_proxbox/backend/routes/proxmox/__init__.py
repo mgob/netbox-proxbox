@@ -45,7 +45,6 @@ async def proxmox_sessions(
     return json_response
 
 
-
 @router.get("/version", )
 async def proxmox_version(
     pxs: ProxmoxSessionsDep
