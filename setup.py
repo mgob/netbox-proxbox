@@ -32,8 +32,10 @@ requires = [
     'jinja2',
     'ujson>=5.7.0',
     'orjson>=3.8.9',
-    'httpcore',
+    'httpcore<0.14.0',
     'pydantic',
+    'h11<0.13',
+    'anyio==3.*',
 ]
 
 dev_requires = [
