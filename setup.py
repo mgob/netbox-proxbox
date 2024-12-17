@@ -26,7 +26,7 @@ requires = [
     'pynetbox>=5',
     'proxmoxer>=1',
     'fastapi[all]',
-    'starlette',
+    'starlette<0.42',
     'uvicorn[standard]',
     'websockets',
     'jinja2',
